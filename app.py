@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 import requests
 
-
+REQUEST_URI = 'https://sleepy-scrubland-22421.herokuapp.com/property/'
+NEXT_REQUEST_URI = ''
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -11,11 +12,22 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/query')
+@app.route('/query', methods=['GET'])
 def query():
-    r = requests.get('https://sleepy-scrubland-22421.herokuapp.com/property/')
+    global NEXT_REQUEST_URI
+    r = requests.get(REQUEST_URI)
+    data = r.json()
+    NEXT_REQUEST_URI = data['next']
     return r.text
 
+
+@app.route('/next-query', methods=['GET'])
+def nextquery():
+    global NEXT_REQUEST_URI
+    r = requests.get(NEXT_REQUEST_URI)
+    data = r.json()
+    NEXT_REQUEST_URI = data['next']
+    return r.text
 
 
 if __name__ == '__main__':
