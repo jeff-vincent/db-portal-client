@@ -24,10 +24,20 @@ def query():
 
 
 @app.route('/next-query', methods=['GET'])
-def nextquery():
+def next_query():
     global NEXT_REQUEST_URI
     global PREVIOUS_REQUEST_URI
     r = requests.get(NEXT_REQUEST_URI)
+    data = r.json()
+    NEXT_REQUEST_URI = data['next']
+    PREVIOUS_REQUEST_URI = data['previous']
+    return data
+
+@app.route('/previous-query', methods=['GET'])
+def previous_query():
+    global NEXT_REQUEST_URI
+    global PREVIOUS_REQUEST_URI
+    r = requests.get(PREVIOUS_REQUEST_URI)
     data = r.json()
     NEXT_REQUEST_URI = data['next']
     PREVIOUS_REQUEST_URI = data['previous']
