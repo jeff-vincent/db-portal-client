@@ -1,9 +1,9 @@
 window.onload = function(){this.getData()}
 
 columnDefs = [
-  {headerName: "X", field: "x", sortable: true, filter: "agTextColumnFilter", groupSelectsChildren: true, rowSelection: 'multiple', autoSize:true},
-  {headerName: "Y", field: "y", sortable: true, filter: "agTextColumnFilter", groupSelectsChildren: true, rowSelection: 'multiple', autoSize:true},
-  {headerName: "Pams Pin", field: "pams_pin", sortable: true, filter: "agTextColumnFilter", groupSelectsChildren: true, rowSelection: 'multiple', autoSize:true},
+  {headerName: "X", field: "x", sortable: true, filter: "agTextColumnFilter"},
+  {headerName: "Y", field: "y", sortable: true, filter: true},
+  {headerName: "Pams Pin", field: "pams_pin", sortable: true, filter: "agTextColumnFilter", rowSelection: 'multiple', autoSize:true},
   {headerName: "Municipal Code", field: "municipal_code", sortable: true, filter: "agTextColumnFilter", groupSelectsChildren: true, rowSelection: 'multiple', autoSize:true},
   {headerName: "Block", field: "block", sortable: true, filter: "agTextColumnFilter", groupSelectsChildren: true, rowSelection: 'multiple', autoSize:true},
   {headerName: "Lot", field: "lot", sortable: true, filter: "agTextColumnFilter", groupSelectsChildren: true, rowSelection: 'multiple', autoSize:true},
@@ -66,10 +66,7 @@ columnDefs = [
 
 function getData() {
     const gridDiv = document.getElementById('ag-grid');
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      }
+    gridDiv.innerHTML = '<h1> Processing... </h1>'
     axios.get('/query')
     .then(function (response) { 
         countDiv = document.getElementById('count')
@@ -80,6 +77,7 @@ function getData() {
             columnDefs: columnDefs,
             rowData: response.data.results
         }
+        gridDiv.innerHTML = ''
         new agGrid.Grid(gridDiv, gridOptions)
     })}
 
