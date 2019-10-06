@@ -112,6 +112,34 @@ function nextQuery() {
   )
 }
 
+function previousQuery() {
+  const gridDiv = document.getElementById('ag-grid');
+  gridDiv.innerHTML = '';
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      }
+    axios.get('/previous-query')
+    .then(function (response) { 
+        countDiv = document.getElementById('count')
+        countDiv.innerHTML = 'Count: '+response.data.count
+        console.log(response)
+        gridOptions = {
+            columnDefs: columnDefs,
+            rowData: response.data.results
+        }
+        new agGrid.Grid(gridDiv, gridOptions)
+
+        if (response.data.next) {
+          insertNextButton()
+        }
+        if (response.data.previous) {
+          insertPreviousButton()
+        }
+    }
+  )
+}
+
 function insertNextButton() {
   nextButtonDiv = document.getElementById('nextButtonDiv');
   nextButtonDiv.innerHTML = '<button class="btn" onclick="nextQuery()">Next Page</button>'
@@ -119,6 +147,6 @@ function insertNextButton() {
 
 function insertPreviousButton() {
   prevButtonDiv = document.getElementById('prevButtonDiv');
-  prevButtonDiv.innerHTML = '<button class="btn" onclick="nextQuery()">Previous Page</button>'
+  prevButtonDiv.innerHTML = '<button class="btn" onclick="previousQuery()">Previous Page</button>'
 }
 
