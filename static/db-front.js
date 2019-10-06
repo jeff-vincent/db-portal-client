@@ -98,7 +98,17 @@ function nextQuery() {
             rowData: response.data.results
         }
         new agGrid.Grid(gridDiv, gridOptions)
+
+        if (response.data.next) {
+          buttonDiv = document.getElementById('buttonDiv');
+          buttonDiv.innerHTML = '<button class="btn" onclick="nextQuery()">Next Page</button>'
+
+        }
     }
   )
+}
+
+function setButtons() {
+
 }
 
