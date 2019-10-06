@@ -80,9 +80,7 @@ function getData() {
         gridDiv.innerHTML = ''
         new agGrid.Grid(gridDiv, gridOptions)
         if (response.data.next) {
-          buttonDiv = document.getElementById('buttonDiv');
-          buttonDiv.innerHTML = '<button class="btn" onclick="nextQuery()">Next Page</button>'
-
+            insertNextButton()
         }
     })}
 
@@ -115,12 +113,12 @@ function nextQuery() {
 }
 
 function insertNextButton() {
-  buttonDiv = document.getElementById('buttonDiv');
-  buttonDiv.innerHTML = '<button class="btn" onclick="nextQuery()">Next Page</button>'
+  nextButtonDiv = document.getElementById('nextButtonDiv');
+  nextButtonDiv.innerHTML = '<button class="btn" onclick="nextQuery()">Next Page</button>'
 }
 
 function insertPreviousButton() {
-  buttonDiv = document.getElementById('buttonDiv');
-  buttonDiv.innerHTML += '<button class="btn" onclick="nextQuery()">Previous Page</button>'
+  prevButtonDiv = document.getElementById('prevButtonDiv');
+  prevButtonDiv.innerHTML = '<button class="btn" onclick="nextQuery()">Previous Page</button>'
 }
 
