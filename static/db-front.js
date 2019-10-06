@@ -70,7 +70,7 @@ function getData() {
     axios.get('/query')
     .then(function (response) { 
         countDiv = document.getElementById('count')
-        countDiv.innerHTML = '<h2>Total Records: '+response.data.count+'</h2>'
+        countDiv.innerHTML = '<h2 class="m-3">Total Records: '+response.data.count+'</h2>'
         console.log(response)
 
         gridOptions = {
