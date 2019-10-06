@@ -18,7 +18,7 @@ def query():
     r = requests.get(REQUEST_URI)
     data = r.json()
     NEXT_REQUEST_URI = data['next']
-    return r.text
+    return data
 
 
 @app.route('/next-query', methods=['GET'])
@@ -27,7 +27,7 @@ def nextquery():
     r = requests.get(NEXT_REQUEST_URI)
     data = r.json()
     NEXT_REQUEST_URI = data['next']
-    return r.text
+    return data
 
 
 if __name__ == '__main__':
