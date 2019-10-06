@@ -121,6 +121,6 @@ function insertNextButton() {
 
 function insertPreviousButton() {
   buttonDiv = document.getElementById('buttonDiv');
-  buttonDiv.innerHTML = buttonDiv.innerHTML + '<button class="btn" onclick="nextQuery()">Previous Page</button>'
+  buttonDiv.innerHTML += '<button class="btn" onclick="nextQuery()">Previous Page</button>'
 }
 
