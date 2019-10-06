@@ -94,7 +94,7 @@ function nextQuery() {
     axios.get('/next-query')
     .then(function (response) { 
         countDiv = document.getElementById('count')
-        countDiv.innerHTML = 'Count: '+response.data.count
+        countDiv.innerHTML = '<h2>Total Records: '+response.data.count+'</h2>'
         console.log(response)
         gridOptions = {
             columnDefs: columnDefs,
@@ -122,7 +122,7 @@ function previousQuery() {
     axios.get('/previous-query')
     .then(function (response) { 
         countDiv = document.getElementById('count')
-        countDiv.innerHTML = 'Count: '+response.data.count
+        countDiv.innerHTML = '<h2>Total Records: '+response.data.count+'</h2>'
         console.log(response)
         gridOptions = {
             columnDefs: columnDefs,
