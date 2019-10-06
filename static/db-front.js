@@ -142,11 +142,11 @@ function previousQuery() {
 
 function insertNextButton() {
   nextButtonDiv = document.getElementById('nextButtonDiv');
-  nextButtonDiv.innerHTML = '<button class="btn btn-outline-secondary" onclick="nextQuery()">Next Page</button>'
+  nextButtonDiv.innerHTML = '<button class="btn btn-outline-warning" onclick="nextQuery()">Next Page</button>'
 }
 
 function insertPreviousButton() {
   prevButtonDiv = document.getElementById('prevButtonDiv');
-  prevButtonDiv.innerHTML = '<button class="btn btn-outline-secondary" onclick="previousQuery()">Previous Page</button>'
+  prevButtonDiv.innerHTML = '<button class="btn btn-outline-warning" onclick="previousQuery()">Previous Page</button>'
 }
 
