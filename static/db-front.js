@@ -94,7 +94,7 @@ function nextQuery() {
     axios.get('/next-query')
     .then(function (response) { 
         countDiv = document.getElementById('count')
-        countDiv.innerHTML = '<h2>Total Records: '+response.data.count+'</h2>'
+        countDiv.innerHTML = 'Total Records: '+response.data.count
         console.log(response)
         gridOptions = {
             columnDefs: columnDefs,
