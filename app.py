@@ -27,7 +27,8 @@ def query():
 def next_query():
     global NEXT_REQUEST_URI
     global PREVIOUS_REQUEST_URI
-    r = requests.get(NEXT_REQUEST_URI)
+    while r.status_code != 200:
+        r = requests.get(NEXT_REQUEST_URI)
     data = r.json()
     NEXT_REQUEST_URI = data['next']
     PREVIOUS_REQUEST_URI = data['previous']
@@ -37,7 +38,8 @@ def next_query():
 def previous_query():
     global NEXT_REQUEST_URI
     global PREVIOUS_REQUEST_URI
-    r = requests.get(PREVIOUS_REQUEST_URI)
+    while r.status_code != 200:
+        r = requests.get(PREVIOUS_REQUEST_URI)
     data = r.json()
     NEXT_REQUEST_URI = data['next']
     PREVIOUS_REQUEST_URI = data['previous']
