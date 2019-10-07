@@ -70,9 +70,8 @@ function getData() {
     axios.get('/query')
     .then(function (response) { 
         countDiv = document.getElementById('count')
-        countDiv.innerHTML = '<h2 class="m-3">Total Records: '+response.data.count+'</h2>'
+        countDiv.innerHTML = '<h3 class="m-3">Total Records: '+response.data.count+'</h3>'
         console.log(response)
-
         gridOptions = {
             columnDefs: columnDefs,
             rowData: response.data.results
@@ -87,27 +86,24 @@ function getData() {
 function nextQuery() {
   const gridDiv = document.getElementById('ag-grid');
   gridDiv.innerHTML = '';
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
+  nextButtonDiv.innerHTML = ''
+  axios.get('/next-query')
+  .then(function (response) { 
+      countDiv = document.getElementById('count')
+      countDiv.innerHTML = '<h3 class="m-3">Total Records: '+response.data.count+'</h3>'
+      console.log(response)
+      gridOptions = {
+          columnDefs: columnDefs,
+          rowData: response.data.results
       }
-    axios.get('/next-query')
-    .then(function (response) { 
-        countDiv = document.getElementById('count')
-        countDiv.innerHTML = 'Total Records: '+response.data.count
-        console.log(response)
-        gridOptions = {
-            columnDefs: columnDefs,
-            rowData: response.data.results
-        }
-        new agGrid.Grid(gridDiv, gridOptions)
+      new agGrid.Grid(gridDiv, gridOptions)
 
-        if (response.data.next) {
-          insertNextButton()
-        }
-        if (response.data.previous) {
-          insertPreviousButton()
-        }
+      if (response.data.next) {
+        insertNextButton()
+      }
+      if (response.data.previous) {
+        insertPreviousButton()
+      }
     }
   )
 }
@@ -115,27 +111,24 @@ function nextQuery() {
 function previousQuery() {
   const gridDiv = document.getElementById('ag-grid');
   gridDiv.innerHTML = '';
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
+  nextButtonDiv.innerHTML = ''
+  axios.get('/previous-query')
+  .then(function (response) { 
+      countDiv = document.getElementById('count')
+      countDiv.innerHTML = '<h3 class="m-3">Total Records: '+response.data.count+'</h3>'
+      console.log(response)
+      gridOptions = {
+          columnDefs: columnDefs,
+          rowData: response.data.results
       }
-    axios.get('/previous-query')
-    .then(function (response) { 
-        countDiv = document.getElementById('count')
-        countDiv.innerHTML = '<h2>Total Records: '+response.data.count+'</h2>'
-        console.log(response)
-        gridOptions = {
-            columnDefs: columnDefs,
-            rowData: response.data.results
-        }
-        new agGrid.Grid(gridDiv, gridOptions)
+      new agGrid.Grid(gridDiv, gridOptions)
 
-        if (response.data.next) {
-          insertNextButton()
-        }
-        if (response.data.previous) {
-          insertPreviousButton()
-        }
+      if (response.data.next) {
+        insertNextButton()
+      }
+      if (response.data.previous) {
+        insertPreviousButton()
+      }
     }
   )
 }
