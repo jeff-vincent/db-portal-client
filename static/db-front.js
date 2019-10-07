@@ -66,11 +66,11 @@ columnDefs = [
 
 function getData() {
     const gridDiv = document.getElementById('ag-grid');
-    gridDiv.innerHTML = '<h1> Processing... </h1>'
+    gridDiv.innerHTML = '<h1 class="m-3"> Processing... </h1>'
     axios.get('/query')
     .then(function (response) { 
         countDiv = document.getElementById('count')
-        countDiv.innerHTML = '<h3 class="m-3">Total Records: '+response.data.count+'</h3>'
+        countDiv.innerHTML = '<h5 class="m-3">Total Records: '+response.data.count+'</h5>'
         console.log(response)
         gridOptions = {
             columnDefs: columnDefs,
@@ -91,7 +91,7 @@ function nextQuery() {
   axios.get('/next-query')
   .then(function (response) { 
       countDiv = document.getElementById('count')
-      countDiv.innerHTML = '<h3 class="m-3">Total Records: '+response.data.count+'</h3>'
+      countDiv.innerHTML = '<h5 class="m-3">Total Records: '+response.data.count+'</h5>'
       console.log(response)
       gridOptions = {
           columnDefs: columnDefs,
@@ -117,7 +117,7 @@ function previousQuery() {
   axios.get('/previous-query')
   .then(function (response) { 
       countDiv = document.getElementById('count')
-      countDiv.innerHTML = '<h3 class="m-3">Total Records: '+response.data.count+'</h3>'
+      countDiv.innerHTML = '<h5 class="m-3">Total Records: '+response.data.count+'</h5>'
       console.log(response)
       gridOptions = {
           columnDefs: columnDefs,
