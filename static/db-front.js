@@ -117,7 +117,7 @@ function previousQuery() {
   axios.get('/previous-query')
   .then(function (response) { 
       countDiv = document.getElementById('count')
-      countDiv.innerHTML = '<h5 class="ml-3 mr-3 mb-3">Total Records: '+response.data.count+'</h5>'
+      countDiv.innerHTML = '<h5 class="ml-3 mr-3 mt-3">Total Records: '+response.data.count+'</h5>'
       console.log(response)
       gridOptions = {
           columnDefs: columnDefs,
