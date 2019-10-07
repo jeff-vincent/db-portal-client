@@ -87,6 +87,7 @@ function nextQuery() {
   const gridDiv = document.getElementById('ag-grid');
   gridDiv.innerHTML = '';
   nextButtonDiv.innerHTML = ''
+  prevButtonDiv.innerHTML = ''
   axios.get('/next-query')
   .then(function (response) { 
       countDiv = document.getElementById('count')
@@ -112,6 +113,7 @@ function previousQuery() {
   const gridDiv = document.getElementById('ag-grid');
   gridDiv.innerHTML = '';
   nextButtonDiv.innerHTML = ''
+  prevButtonDiv.innerHTML = ''
   axios.get('/previous-query')
   .then(function (response) { 
       countDiv = document.getElementById('count')
